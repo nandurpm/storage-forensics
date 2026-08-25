@@ -54,3 +54,9 @@ The test suite covers aggregation, duplicate grouping, exclusions, protected sco
 ## License
 
 MIT.
+
+## Live Render Demo
+
+A responsive, synthetic/demo report is available at [https://storage-forensics.onrender.com](https://storage-forensics.onrender.com). The hosted view is read-only and preserves the repository's documented local-first boundaries.
+
+<!-- render-live-url:https://storage-forensics.onrender.com -->
