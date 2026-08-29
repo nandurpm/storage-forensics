@@ -1,3 +1,10 @@
+/*
+ * ============================================================
+ * FILE: analyze.mjs
+ * PURPOSE: Derives Storage Forensics's summaries and findings from normalized local metadata.
+ * ============================================================
+ */
+
 import { createReadStream } from "node:fs";import { opendir,stat,statfs } from "node:fs/promises";import { createHash } from "node:crypto";import { basename,relative,resolve,sep } from "node:path";
 const DEFAULT_EXCLUSIONS=new Set(['.git','node_modules','.cache','System Volume Information','$RECYCLE.BIN']);const SYSTEM_PREFIXES=['/proc','/sys','/dev','/etc','/boot','/usr','/bin','/sbin','/var/lib','/windows','/program files'];const MAX_FILES=200000;
 const number=value=>Number.isFinite(value)?value:0;const safeTime=value=>Number.isFinite(value)?value:0;export const formatBytes=bytes=>{const value=number(bytes),units=['B','KB','MB','GB','TB'];let unit=0,size=value;while(size>=1024&&unit<units.length-1){size/=1024;unit+=1}return `${Number(size.toPrecision(4))} ${units[unit]}`};

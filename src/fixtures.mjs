@@ -1,2 +1,9 @@
+/*
+ * ============================================================
+ * FILE: fixtures.mjs
+ * PURPOSE: Provides deterministic synthetic fixtures for Storage Forensics's demonstrations and regression tests.
+ * ============================================================
+ */
+
 import { mkdir,writeFile,utimes } from "node:fs/promises";import { join,resolve } from "node:path";
 export async function createSyntheticFixture(root){const target=resolve(root),docs=join(target,'documents'),media=join(target,'media'),excluded=join(target,'node_modules');await mkdir(docs,{recursive:true});await mkdir(media,{recursive:true});await mkdir(excluded,{recursive:true});await writeFile(join(docs,'notes.txt'),'Synthetic fixture: local report test data.\n');await writeFile(join(docs,'duplicate-a.txt'),'same synthetic content\n');await writeFile(join(media,'duplicate-b.txt'),'same synthetic content\n');await writeFile(join(media,'large.bin'),'x'.repeat(8192));await writeFile(join(excluded,'ignored.js'),'excluded fixture data\n');const old=new Date('2020-01-01T00:00:00Z');await utimes(join(docs,'notes.txt'),old,old);return target}
